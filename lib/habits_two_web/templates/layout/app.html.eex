@@ -12,15 +12,10 @@
   </head>
 
   <body>
+
+    <%= render "navbar.html" %>
+
     <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
 
       <%= show_notification(@conn, :info, get_flash(@conn, :info)) %>
       <%= show_notification(@conn, :error, get_flash(@conn, :error)) %>
