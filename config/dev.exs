@@ -37,7 +37,7 @@ config :habits_two, HabitsTwoWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/habits_two_web/views/.*(ex)$},
-      ~r{lib/habits_two_web/templates/.*(eex)$}
+      ~r{lib/habits_two_web/templates/.*(eex|slim|slime)$}
     ]
   ]
 
@@ -51,8 +51,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :habits_two, HabitsTwo.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "daryllxd",
+  password: "",
   database: "habits_two_dev",
   hostname: "localhost",
   pool_size: 10
