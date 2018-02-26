@@ -1,25 +1,20 @@
 .jumbotron
   h2= "Welcome to Habits #{1 + 1}!"
   p.lead
-    | A productive web framework that
-    br>/
-    | does not compromise speed and maintainability.
+    | The best habits app of all time.
 .row.marketing
   .col-lg-6
-    h4 Resources
-    ul
-      li
-        a href="http://phoenixframework.org/docs/overview"  Guides
-      li
-        a href="https://hexdocs.pm/phoenix"  Docs
-      li
-        a href="https://github.com/phoenixframework/phoenix"  Source
-  .col-lg-6
-    h4 Help
-    ul
-      li
-        a href="http://groups.google.com/group/phoenix-talk"  Mailing list
-      li
-        a href="http://webchat.freenode.net/?channels=elixir-lang"  #elixir-lang on freenode IRC
-      li
-        a href="https://twitter.com/elixirphoenix"  @elixirphoenix
+    h4 Log In
+    = if @maybe_user == nil do
+      = form_for @changeset, @action, fn f ->
+        .form-group
+          = label f, :email, class: "control-label"
+          = text_input f, :email, class: "form-control"
+          = error_tag f, :email
+        .form-group
+          = label f, :password, class: "control-label"
+          = password_input f, :password, class: "form-control"
+          = error_tag f, :password
+        .form-group
+          = submit "Submit", class: "btn btn-primary"
+

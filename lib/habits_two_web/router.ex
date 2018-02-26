@@ -13,10 +13,20 @@ defmodule HabitsTwoWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug HabitsTwo.Auth.Pipeline
+  end
+
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
   scope "/", HabitsTwoWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :auth] # Use the default browser stack
 
     get "/", PageController, :index
+    post "/", PageController, :login
+    resources "registrations", RegistrationsController
   end
 
   # Other scopes may use custom stacks.

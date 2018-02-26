@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :habits_two, HabitsTwo.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "daryllxd",
+  password: "",
   database: "habits_two_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

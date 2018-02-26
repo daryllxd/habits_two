@@ -12,7 +12,7 @@ config :habits_two,
 # Configures the endpoint
 config :habits_two, HabitsTwoWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "Qw7WqXOJH15Dh/jYdsFkSc8/lxDp2f1QnVzfFtfJxmBpfoTXa4296+HSV8AqO8tw",
+  secret_key_base: "cnIxqk83ZYOvnN0OxSDiPsU3Ua/es0eTvW+oN0dyEaAutN6kR+stvPLoyDbnglJZ",
   render_errors: [view: HabitsTwoWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: HabitsTwo.PubSub,
            adapter: Phoenix.PubSub.PG2]
