@@ -22,8 +22,8 @@
         <span class="logo"></span>
       </header>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= show_notification(@conn, :info, get_flash(@conn, :info)) %>
+      <%= show_notification(@conn, :error, get_flash(@conn, :error)) %>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
