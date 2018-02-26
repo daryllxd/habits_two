@@ -26,7 +26,7 @@ defmodule HabitsTwoWeb.Router do
 
     get "/", PageController, :index
     post "/", PageController, :login
-    resources "registrations", RegistrationsController
+    resources "users", UserController
   end
 
   # Other scopes may use custom stacks.

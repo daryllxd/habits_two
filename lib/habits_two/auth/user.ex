@@ -1,6 +1,7 @@
 defmodule HabitsTwo.Auth.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias HabitsTwo.Repo
   alias HabitsTwo.Auth.User
   alias Comeonin.Bcrypt
 

@@ -1,0 +1,9 @@
+h1 New User
+= form_for @changeset, user_path(@conn, :create), fn f ->
+  .form-group
+    = text_input f, :email, placeholder: "Email", class: "form-control"
+    = error_tag f, :email
+  .form-group
+    = password_input f, :password, placeholder: "Password", class: "form-control"
+    = error_tag f, :password
+  = submit "Create User", class: "btn btn-primary"
