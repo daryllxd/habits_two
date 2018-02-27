@@ -1,2 +1,4 @@
-p(class="alert #{@class}" role="alert")
+p(class="alert alert-dismissible fade show #{@class}" role="alert")
   = @message
+  button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+    span(aria-hidden="true")&times;
