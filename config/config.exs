@@ -17,6 +17,10 @@ config :habits_two, HabitsTwoWeb.Endpoint,
   pubsub: [name: HabitsTwo.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :habits_two, HabitsTwo.Auth.Guardian,
+       issuer: "habits_two",
+       secret_key: "3ZO4NMnWk4t3LB51zto/nOu92rglPLlGAUWxzMT1Q/WvxidAaP174jRPg8Xj6ydG"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

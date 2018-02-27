@@ -26,6 +26,7 @@ defmodule HabitsTwoWeb.Router do
 
     get "/", PageController, :index
     post "/", PageController, :login
+    post "/logout", PageController, :logout
     resources "users", UserController
   end
 

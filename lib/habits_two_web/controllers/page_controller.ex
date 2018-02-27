@@ -40,7 +40,7 @@ defmodule HabitsTwoWeb.PageController do
 
   def logout(conn, _) do
     conn
-    |> GuardianPlug.sign_out()
+    |> Guardian.Plug.sign_out()
     |> redirect(to: page_path(conn, :login))
   end
 

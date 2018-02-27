@@ -1,4 +1,4 @@
-defmodule HabitsOne.Auth.ErrorHandler do
+defmodule HabitsTwo.Auth.ErrorHandler do
   import Plug.Conn
 
   def auth_error(conn, {type, _reason}, _opts) do

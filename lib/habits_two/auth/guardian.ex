@@ -1,5 +1,5 @@
 defmodule HabitsTwo.Auth.Guardian do
-  use Guardian, otp_app: :auth_ex
+  use Guardian, otp_app: :habits_two
 
   alias HabitsTwo.Auth
 

@@ -5,8 +5,8 @@
   = link "Sign Up", to: user_path(@conn, :new), class: "btn btn-primary"
 .row.marketing
   .col-lg-6
-    h4 Log In
     = if @maybe_user == nil do
+      h4 Log In
       = form_for @changeset, @action, fn f ->
         .form-group
           = label f, :email, class: "control-label"
@@ -18,4 +18,3 @@
           = error_tag f, :password
         .form-group
           = submit "Submit", class: "btn btn-primary"
-
