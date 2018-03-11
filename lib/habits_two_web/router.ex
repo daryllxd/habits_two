@@ -28,6 +28,8 @@ defmodule HabitsTwoWeb.Router do
     post "/", PageController, :login
     post "/logout", PageController, :logout
     resources "users", UserController
+
+    resources "habits", HabitController
   end
 
   # Other scopes may use custom stacks.
