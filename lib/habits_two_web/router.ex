@@ -29,11 +29,11 @@ defmodule HabitsTwoWeb.Router do
     post "/logout", PageController, :logout
     resources "users", UserController
 
-    resources "habits", HabitController
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", HabitsTwoWeb do
-  #   pipe_through :api
-  # end
+  scope "/", HabitsTwoWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+
+    resources "habits", HabitController
+  end
 end
