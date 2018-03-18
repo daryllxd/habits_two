@@ -1,6 +1,7 @@
 defmodule HabitsTwo.Habit do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
 
   alias HabitsTwo.Habit
   alias HabitsTwo.Auth.User
@@ -18,6 +19,11 @@ defmodule HabitsTwo.Habit do
     user
     |> cast(attrs, [:title, :description, :created_by_user_id])
     |> validate_required([:title, :description, :created_by_user_id])
+  end
+
+  def of_user(user_id) do
+    from u in Habit,
+    where: u.created_by_user_id == ^user_id
   end
 end
 

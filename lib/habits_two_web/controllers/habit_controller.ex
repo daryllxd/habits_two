@@ -10,10 +10,10 @@ defmodule HabitsTwoWeb.HabitController do
   alias HabitsTwo.Habit
 
   def index(conn, _params) do
-    current_user = current_resource(conn)
+    current_user_id = current_resource(conn).id
 
-    habits = Habit
-              |> Repo.all()
+    habits = Habit.of_user(current_user_id)
+              |> Repo.all
 
     conn
     |> render("index.html", habits: habits)
