@@ -20,5 +20,8 @@
         .form-group
           = submit "Submit", class: "btn btn-primary"
     - else
-      h4 You're logged in boys
-      = link "Log Out", to: page_path(@conn, :logout), method: :post, class: "btn btn-danger"
+      h4 Welcome to Your Home Screen!
+      p
+        = link "CRUD Habits", to: habit_path(@conn, :index), class: "btn btn-primary"
+      p
+        = link "Log Out", to: page_path(@conn, :logout), method: :post, class: "btn btn-danger"
