@@ -9,6 +9,8 @@ defmodule HabitsTwo.Auth.User do
     field :email, :string
     field :password, :string
 
+    has_many :habits, HabitsTwo.Habit
+
     timestamps()
   end
 

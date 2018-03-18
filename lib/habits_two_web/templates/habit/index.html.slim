@@ -1,3 +1,14 @@
 .jumbotron
   h1 List your habits here!
+  = link "Add a Habit", to: habit_path(@conn, :new), class: "btn btn-primary"
 
+table.table
+  tr
+    th Title
+    th Description
+  = for habit <- @habits do
+    tr
+      td
+        strong= habit.title
+      td
+        = habit.description
