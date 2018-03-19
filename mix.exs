@@ -34,7 +34,7 @@ defmodule HabitsTwo.Mixfile do
   defp deps do
     [
       {:bcrypt_elixir, "~> 0.12"},
-      {:comeonin, "~> 4.0"},
+      {:comeonin, "~> 4.0"},                        # Authentication
       {:cowboy, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:guardian, "~> 1.0"},
@@ -43,8 +43,10 @@ defmodule HabitsTwo.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_slime, "~> 0.9.0"},
-      {:postgrex, ">= 0.0.0"}
+      {:phoenix_slime, "~> 0.9.0"},                 # Slim templates
+      {:postgrex, ">= 0.0.0"},
+      {:scrivener_ecto, "~> 1.0"},                  # Pagination for the database
+      {:scrivener_html, "~> 1.7"}                   # Pagination for HTML
     ]
   end
 

@@ -17,3 +17,6 @@ table.table
         = link "Edit", to: habit_path(@conn, :edit, habit.id)
       td
         = link "Delete", to: habit_path(@conn, :delete, habit.id), method: :delete, data: [ confirm: "Really?" ]
+
+= pagination_links @habits
+

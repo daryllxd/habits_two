@@ -9,15 +9,15 @@ defmodule HabitsTwoWeb.HabitController do
   alias HabitsTwo.Repo
   alias HabitsTwo.Habit
 
-  def index(conn, _params) do
+  def index(conn, params) do
     current_user_id = current_resource(conn).id
 
     habits = Habit
               |> Habit.of_user(current_user_id)
-              |> Repo.all
+              |> Repo.paginate(params)
 
     conn
-    |> render("index.html", habits: habits)
+    |> render("index.html", habits: habits, page_number: habits.page_number)
   end
 
   def new(conn, _params) do
