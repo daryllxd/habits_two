@@ -12,7 +12,8 @@ defmodule HabitsTwoWeb.HabitController do
   def index(conn, _params) do
     current_user_id = current_resource(conn).id
 
-    habits = Habit.of_user(current_user_id)
+    habits = Habit
+              |> Habit.of_user(current_user_id)
               |> Repo.all
 
     conn

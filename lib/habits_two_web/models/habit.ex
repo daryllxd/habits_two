@@ -21,8 +21,8 @@ defmodule HabitsTwo.Habit do
     |> validate_required([:title, :description, :created_by_user_id])
   end
 
-  def of_user(user_id) do
-    from u in Habit,
+  def of_user(query, user_id) do
+    from u in query,
     where: u.created_by_user_id == ^user_id
   end
 end
