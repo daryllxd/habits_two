@@ -6,11 +6,14 @@ table.table
   tr
     th Title
     th Description
+    th.text-center(colspan="2") Actions
   = for habit <- @habits do
     tr
       td
         strong= habit.title
       td
         = habit.description
+      td
+        = link "Edit", to: habit_path(@conn, :edit, habit.id)
       td
         = link "Delete", to: habit_path(@conn, :delete, habit.id), method: :delete, data: [ confirm: "Really?" ]

@@ -1,6 +1,8 @@
 defmodule HabitsTwoWeb.HabitController do
   use HabitsTwoWeb, :controller
 
+  plug :assign_habit when action in [:edit, :update]
+
   # Not sure if there is a better solution to this, I just need `Guardian.Plug` so I can access current_resource
   import Guardian.Plug
 
@@ -19,7 +21,7 @@ defmodule HabitsTwoWeb.HabitController do
   end
 
   def new(conn, _params) do
-    changeset = Habit.changeset(%Habit{}, %{email: '', password: ''})
+    changeset = Habit.changeset(%Habit{}, %{title: '', description: ''})
 
     conn
     |> render("new.html", changeset: changeset)
@@ -43,6 +45,27 @@ defmodule HabitsTwoWeb.HabitController do
     end
   end
 
+  def edit(conn, %{"id" => id}) do
+    changeset = Habit.changeset(conn.assigns.habit)
+
+    conn
+    |> render("edit.html", changeset: changeset)
+  end
+
+  def update(conn, %{"habit" => habit_params}) do
+    case Habit.update_habit(conn.assigns.habit, habit_params) do
+      {:ok, habit} ->
+        conn
+        |> put_flash(:info, "#{habit.title} updated!")
+        |> redirect(to: habit_path(conn, :index))
+      {:error, changeset} ->
+        conn
+        |> put_flash(:error, "Error.")
+        |> redirect(to: habit_path(conn, :index))
+
+    end
+  end
+
   def delete(conn, %{"id" => id}) do
     habit = Habit.get_habit(id)
 
@@ -54,6 +77,17 @@ defmodule HabitsTwoWeb.HabitController do
       { :error, habit } ->
         conn
         |> put_flash(:error, "Can't delete.")
+        |> redirect(to: habit_path(conn, :index))
+    end
+  end
+
+  defp assign_habit(conn, _opts) do
+    case Habit.get_habit(conn.params["id"]) do
+      %HabitsTwo.Habit{} = habit ->
+        assign(conn, :habit, habit)
+      nil ->
+        conn
+        |> put_flash(:error, "Habit not found!")
         |> redirect(to: habit_path(conn, :index))
     end
   end

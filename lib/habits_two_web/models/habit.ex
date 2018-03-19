@@ -18,7 +18,7 @@ defmodule HabitsTwo.Habit do
 
   def get_habit(id), do: Repo.get(Habit, id)
 
-  def changeset(%Habit{} = user, attrs) do
+  def changeset(%Habit{} = user, attrs \\ %{}) do
     user
     |> cast(attrs, [:title, :description, :created_by_user_id])
     |> validate_required([:title, :description, :created_by_user_id])
@@ -28,5 +28,10 @@ defmodule HabitsTwo.Habit do
     from u in query,
     where: u.created_by_user_id == ^user_id
   end
-end
 
+  def update_habit(habit, params) do
+    habit
+    |> Habit.changeset(params)
+    |> Repo.update
+  end
+end
