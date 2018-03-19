@@ -3,6 +3,7 @@ defmodule HabitsTwo.Habit do
   import Ecto.Changeset
   import Ecto.Query
 
+  alias HabitsTwo.Repo
   alias HabitsTwo.Habit
   alias HabitsTwo.Auth.User
 
@@ -14,6 +15,8 @@ defmodule HabitsTwo.Habit do
 
     timestamps()
   end
+
+  def get_habit(id), do: Repo.get(Habit, id)
 
   def changeset(%Habit{} = user, attrs) do
     user

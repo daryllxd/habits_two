@@ -5,8 +5,6 @@ defmodule HabitsTwoWeb.HabitController do
   import Guardian.Plug
 
   alias HabitsTwo.Repo
-  alias HabitsTwo.Auth
-  alias HabitsTwo.Auth.User
   alias HabitsTwo.Habit
 
   def index(conn, _params) do
@@ -42,6 +40,21 @@ defmodule HabitsTwoWeb.HabitController do
       {:error, changeset} ->
         conn
         |> render("new.html", changeset: changeset)
+    end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    habit = Habit.get_habit(id)
+
+    case Repo.delete(habit) do
+      { :ok, habit } ->
+        conn
+        |> put_flash(:info, "#{habit.title} deleted!")
+        |> redirect(to: habit_path(conn, :index))
+      { :error, habit } ->
+        conn
+        |> put_flash(:error, "Can't delete.")
+        |> redirect(to: habit_path(conn, :index))
     end
   end
 
